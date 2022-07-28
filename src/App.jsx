@@ -1,6 +1,5 @@
-
 import './App.css';
-import HotelListing from './Components/Pages/HotelListingPage/HotelListing';
+import HotelListing from './Pages/HotelListingPage/HotelListing';
 
 function App() {
   return (
