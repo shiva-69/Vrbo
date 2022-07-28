@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {ImMobile} from 'react-icons/im';
 import {BsSuitHeart} from 'react-icons/bs';
 import {FiUser} from 'react-icons/fi';
@@ -6,8 +6,10 @@ import {BiUserPlus} from 'react-icons/bi';
 import {FiHelpCircle} from 'react-icons/fi';
 
 import './Navbar.css';
+import { isLogin } from '../../App';
 
 function Navbar() {
+  const auth=useContext(isLogin);
   return (
     <>
     <div className="Navbar-container">
@@ -20,8 +22,14 @@ function Navbar() {
                 <li><BsSuitHeart/>
                   Try Boards
                 </li>
-                <li><FiUser/>Log in</li>
-                <li> <BiUserPlus/> Signup</li>
+                {
+                  auth?<li><FiUser/>Log in</li>:null
+                }
+              
+                {
+                  
+                  auth? <li> <BiUserPlus/> Signup</li>:null
+                }
                 <li> <FiHelpCircle/>  Help</li>
                 <li>GBP</li>
                 <li>EN</li>
