@@ -1,0 +1,15 @@
+.Navbar-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(196, 192, 192, 0.236);
+    padding: 15px;
+}
+
+.nav-right{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+li{
+    list-style: none;
+}
