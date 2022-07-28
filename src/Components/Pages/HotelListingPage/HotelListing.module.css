@@ -1,0 +1,90 @@
+.mainContainer
+{
+    display: flex;
+    font-family: FreightSansLF Pro,Noto Sans JP,Noto Sans KR,Helvetica Neue,Helvetica,Arial,Lucida Grande,Segoe UI,Tahoma,-apple-system,Roboto,sans-serif;
+    position: absolute;
+    bottom: 0px;
+}
+
+.resultsContainer
+{
+ display: flex;
+ width: 60%;
+ flex-direction: column;
+ gap: 10px;   
+ padding: 10px;
+ height: 80vh;
+ overflow-y: scroll;
+}
+.cityName
+{
+    font-size: 35px;
+    color: rgb(39, 37, 37);
+}
+.sortBtn
+{
+    border: none;
+    width: 20px;
+    font-size: 14px;
+    color: rgb(61, 29, 29);
+}
+.resultsContainer::-webkit-scrollbar
+{
+    display: none;
+}
+.hotelImage
+{
+    width: 38%;
+    border-radius: 5px;
+}
+.hoteldiv
+{
+    
+    display: flex;
+    gap:10px;
+    padding:8px;
+    border-bottom: 0.5px solid rgb(212, 205, 205);
+    border-top: 0.5px solid rgb(212, 205, 205);
+}
+.heading1
+{
+    font-size: 14px;
+    color: rgb(61, 29, 29);
+}
+.hotelName
+{
+    color: rgb(56, 32, 32);
+    font-size: 17px;
+    cursor: pointer;
+}
+.hotelName :hover
+{
+   text-decoration: underline ;
+}
+.cancellationContainer
+{
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 12px;
+    font-style: italic;
+    color: rgb(61, 29, 29);
+    font-family: cursive;
+}
+.priceandratingContainer
+{
+    display: flex;
+    width: 35vw;
+    justify-content: space-between;
+}
+.ratingDiv
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+.map
+{
+    width: 38vw;
+    height: 80vh;
+}
