@@ -3,8 +3,12 @@ const cors=require("cors");
 const connectDatabase=require("./Database/index");
 const HotelRouter=require("./Routers/HotelRouter");
 const UserRouter = require("./Routers/User");
+
 const GoogleRouter = require("./Routers/GoogleAuth");
 const session = require('express-session');
+
+
+const CheckoutRouter = require("./Routers/CheckoutRouter");
 
 
 const app=express();
@@ -19,7 +23,11 @@ app.use(session({
   }))
 app.use(HotelRouter);
 app.use(UserRouter);
+
 // app.use(GoogleRouter);
+
+app.use(CheckoutRouter);
+
 connectDatabase()
 .then(()=>{
     app.listen(port,()=>
