@@ -3,17 +3,28 @@ const cors=require("cors");
 const connectDatabase=require("./Database/index");
 const HotelRouter=require("./Routers/HotelRouter");
 const UserRouter = require("./Routers/User");
+const GoogleRouter = require("./Routers/GoogleAuth");
+const session = require('express-session');
+
 
 const app=express();
+const port = 3001;
 app.use(express.json());
 app.use(cors());
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }))
 app.use(HotelRouter);
 app.use(UserRouter);
+// app.use(GoogleRouter);
 connectDatabase()
 .then(()=>{
-    app.listen(3001,()=>
+    app.listen(port,()=>
     {
-        console.log("Server has been connected to port 3001")
+        console.log(`Server connected to port ${port}`);
     })
 })
 
