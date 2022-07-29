@@ -1,10 +1,13 @@
 import './App.css';
-import HotelListing from './Pages/HotelListingPage/HotelListing';
+import Checkout from './Components/Checkout/Checkout';
+// import HotelListing from './Pages/HotelListingPage/HotelListing';
 
 function App() {
   return (
     <>
-      <HotelListing/>
+      {/* <HotelListing/> */}
+      <Checkout/>
+
     </>
   );
 }

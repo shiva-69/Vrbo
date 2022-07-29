@@ -1,0 +1,171 @@
+#container{
+    border: 1px solid red;
+    display: flex;
+    padding: 25px;
+
+}
+/* .dis-flex{
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+} */
+
+.left-checkout{
+    border: 1px solid red;
+    width: 65%;
+    padding: 15px;
+}
+
+.hotal-title{
+    font-size: 35px;
+}
+
+.img-div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+    gap: 30px;
+}
+ .firstContainer{
+    width: 70%;
+}
+.firstContainer img{
+    display: block;
+    width: 100%;
+    margin: auto;
+}
+ .secondContainer{
+  display: flex;
+  flex-direction: column;
+   width: 20%;
+   gap:20px;
+}
+ .secondContainer img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.secondContainer > div > img{
+    display: block;
+    height: 17rem;
+}
+.img-div2 img{
+  display: block;
+}
+.img-div2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.img-div2 div img{
+    display: block;
+    width: 97%;
+}
+.img-div2 div{
+  display: flex;
+  flex-direction: row;
+
+}
+
+/*
+.firstContainer > img{
+    display: block;
+    width: 100%;
+}
+.secondContainer{
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+}
+.img-div2 > img{
+    width: 100%;
+    display: block;
+} */
+
+/* .img-div1{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+.img-inside2{
+    height: 65%;
+    width: 100%;
+}
+.img-div2{
+    height: 35%;
+    
+    display: flex;
+    flex-direction: row;
+} */
+/* .img-inside3{
+    width: 50%;
+} */
+.save-share{
+    text-align: right;
+}
+.nav-list{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 25px;
+    padding: 20px;
+
+}
+.nav-list>li{
+    list-style: none;
+}
+
+
+
+
+
+
+.right-checkout{
+    width: 35%;
+    border: 1px solid red;
+    padding: 10px;
+}
+.price{
+    font-size: 25px;
+    display: block;
+}
+
+.date-cnt{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: auto;
+    width: 80%;
+    padding: 30px;
+
+}
+.select-date{
+    display: flex;
+    /* width: 100%; */
+    margin: auto;
+   
+}
+input{
+    padding: 25px;
+}
+.check-btn{
+    display: block;
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgb(12, 39, 138);
+    color: white;
+    padding-left: 55px;
+    padding-right: 55px;
+    border-radius: 35px;
+    margin-bottom: 25px;
+}
+.t-c{
+    text-align: center;
+}
+.c-b{
+    color: blue;
+}
