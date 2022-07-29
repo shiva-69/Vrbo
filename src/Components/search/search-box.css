@@ -1,0 +1,92 @@
+.search-box {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 450px;
+  background: url("https://thumbs.dreamstime.com/b/picture-showing-happy-family-relaxing-hotel-room-123516381.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(15, 15, 15, 0.295);
+  z-index: 1;
+}
+
+.search-main {
+  position: absolute;
+  /* border: 1px solid blue; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.headline {
+  display: flex;
+  justify-content: flex-start;
+  /* border: 1px solid red; */
+  width: 60%;
+}
+
+.headline h1 {
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 0 5px rgb(0 0 0 / 80%);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: normal;
+  margin-bottom: 10px;
+}
+
+.search-box-main {
+  /* border: 1px solid red; */
+  width: 60%;
+  height: 20%;
+  background: #f5f4f3;
+  border-radius: 10px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 1%; */
+  position: relative;
+}
+
+.serach-input-middle {
+  width: 100%;
+  height: 100%;
+  background: #f5f4f3;
+  border-radius: 10px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 1%; */
+  position: relative;
+}
+
+.search-box-main.active {
+  width: 100%;
+  height: 92px;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  z-index: 80;
+}
+
+.search-box-main.active .serach-input-middle {
+  width: 60%;
+  height: 92px;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  z-index: 80;
+}
