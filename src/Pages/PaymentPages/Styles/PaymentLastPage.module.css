@@ -1,0 +1,222 @@
+.H4Heading{
+    font-weight: 700;
+}
+.mainContainer
+{
+    margin: -8px;
+    background-color: rgb(243, 240, 240);
+    font-family: Noto Sans KR,sans-serif;
+    padding: 10px 100px;
+}
+.headingContainer
+{
+    padding: 10px;
+}
+.heading
+{
+    font-family: Noto Sans KR,sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #292929;
+}
+.flexbox
+{
+    display: flex;
+    
+}
+.leftContainer
+{
+    
+    width: 60%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.leftFirstBox
+{
+    background-color: white;
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.CardSelectionBox
+{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.CardSelectionBox input[type="checkbox"]
+{
+     width: 50px;
+}
+.CardBox
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(192, 182, 182);
+    height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+.CardBox img{
+    width: 40px;
+}
+.CardDetails
+{
+    display: flex;
+    gap:10px
+
+}
+.CardDetails input
+{
+    height: 40px;
+    border: 1px solid rgb(192, 182, 182);
+    height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+.CardDetails select
+{
+    height: 40px;
+    border: 1px solid rgb(192, 182, 182);
+    height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+.CardDetailsBox
+{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.BillingAddressBox
+{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.leftSecondBox
+{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+   padding: 20px;
+   border-radius: 8px;
+}
+
+.buttonContainer
+{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.buttonContainer button
+{
+    height: 60px;
+    width: 300px;
+    border-radius: 50px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background-color: rgba(62, 62, 250, 0.822);
+    cursor: pointer;
+}
+.rightContainer
+{
+    width: 40%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.rightFirstBox
+{
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+}
+.rightSecondBox
+{
+    background-color: white;
+    border-radius: 5px;
+    
+}
+.rightThirdBox
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:5px;
+    
+}
+.rightFourthBox
+{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 10px;
+    border: 1px solid rgb(202, 187, 187);
+    border-radius: 5px;
+    background-color: white;
+    
+}
+.imageBox
+{
+    display: flex;
+    justify-content: center;
+}
+.imageBox img
+{
+    width: 33%;
+}
+.PriceBox
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid rgb(202, 187, 187);
+}
+.checkBox
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkBox img
+{
+    width: 25px;
+}
+.rightFifthBox
+{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgb(202, 187, 187);
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.GuaranteeBox
+{
+    display: flex;
+    gap: 15px;
+    
+
+}
+.GuaranteeBox img
+{
+    width: 25px;
+}
