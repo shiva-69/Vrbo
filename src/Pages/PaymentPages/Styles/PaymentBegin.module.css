@@ -1,0 +1,212 @@
+.H4Heading{
+    font-weight: 700;
+}
+.mainContainer
+{
+    margin: -8px;
+    background-color: rgb(243, 240, 240);
+    font-family: Noto Sans KR,sans-serif;
+    padding: 10px 100px;
+}
+.Navbar
+{
+    
+    height: 80px;
+}
+.headingContainer
+{
+    padding: 10px;
+}
+.heading
+{
+    font-family: Noto Sans KR,sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #292929;
+}
+.flexbox
+{
+    display: flex;
+    
+}
+.leftContainer
+{
+    
+    width: 60%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.leftFirstBox
+{
+    background-color: white;
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+    padding: 20px;
+    border-radius: 8px;
+}
+.leftSecondBox
+{
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 8px;
+}
+.leftSecondBox input
+{
+    height: 40px;
+    width: 100%;
+    height: 55px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(202, 187, 187);
+}
+.leftSecondBox select
+{
+    height: 55px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(202, 187, 187);
+}
+.ContactForm
+{
+    gap:10px;
+}
+.leftThirdBox
+{
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.Avatar
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.Avatar img
+{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+.leftThirdBox textarea
+{
+    width: 100%;
+    border: 1px solid rgb(202, 187, 187);
+}
+.buttonContainer
+{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.buttonContainer button
+{
+    height: 60px;
+    width: 300px;
+    border-radius: 50px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background-color: rgba(62, 62, 250, 0.822);
+    cursor: pointer;
+}
+.rightContainer
+{
+    width: 40%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.rightFirstBox
+{
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+}
+.rightSecondBox
+{
+    background-color: white;
+    border-radius: 5px;
+    
+}
+.rightThirdBox
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:5px;
+    
+}
+.rightFourthBox
+{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 10px;
+    border: 1px solid rgb(202, 187, 187);
+    border-radius: 5px;
+    background-color: white;
+    
+}
+.imageBox
+{
+    display: flex;
+    justify-content: center;
+}
+.imageBox img
+{
+    width: 33%;
+}
+.PriceBox
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid rgb(202, 187, 187);
+}
+.checkBox
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkBox img
+{
+    width: 25px;
+}
+.rightFifthBox
+{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgb(202, 187, 187);
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.GuaranteeBox
+{
+    display: flex;
+    gap: 15px;
+    
+
+}
+.GuaranteeBox img
+{
+    width: 25px;
+}
+/*<div class="message-to-host__photo" style="background-image: url(&quot;https://mediaim.expedia.com/lodgingprofile/31550489/d2d9aacb-c0c8-4565-8b22-2ac83749bc45.c1.jpg&quot;);"></div>*/
