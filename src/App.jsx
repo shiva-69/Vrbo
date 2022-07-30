@@ -12,7 +12,6 @@ function App() {
     <>
     <Routes>
       
-    
     <Route path='/results' element={<HotelListing/>}/>
     <Route path='/firstPayment' element={<PaymentBegin/>}/>
     <Route path="/finalPayment" element={<PaymentLastPage/>}/>
