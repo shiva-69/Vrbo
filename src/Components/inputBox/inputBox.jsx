@@ -13,6 +13,9 @@ export const InputBox = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date())
   const curDate = new Date();
+  const [search,setSearch] = useState([])
+  const [searchText,setSearchText] = useState("")
+  const [fetchData,setFetchData] = useState(true);
 
   // const dispatch = useDispatch();
   const handleStartDate = (date)=>{
@@ -32,31 +35,63 @@ export const InputBox = () => {
       setEndDate(date);
     }
   }
+  const handleUpdateSearch = (e)=>{
+    // console.log(e.target.innerText,"in setdata")
+    setFetchData(false)
+    setSearchText(e.target.innerText)
+    setSearch([])
+    console.log(searchText,'searchtext')
+    
+
+  }
+
+  const handleSearch = (e)=>{
+    let queary = e.target.value
+  }
+  
 
   const handleChange = (e) => {
-    const { name } = e.target;
+    if(searchText==""){
+      setFetchData(true)
+    }
+    let queary = e.target.value
+    // setSearchText(queary);
+    setSearchText(queary)
+    console.log(queary)
+   if(fetchData){
+    fetch(`http://localhost:3001/city/${queary}`)
+    .then((res) => res.json())
+    .then((res) => setSearch(res))
+   }
+    
 
-    setText({
-      ...text,
-      [name]: e.target.value,
-    });
+    // const { name } = e.target;
+
+    // setText({
+    //   ...text,
+    //   [name]: e.target.value,
+    // });
   };
 
   // console.log(text);
 
   return (
+    <>
     <div className="main-search">
+      
       <div className="div1">
         <ion-icon name="location-outline">
         <svg data-id="SVG_LOCATION__24" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" d="M6.453 13.47a6.75 6.75 0 01.723-8.692l.05-.05a6.752 6.752 0 019.548 0l.05.05a6.75 6.75 0 01.723 8.693L12 21.25l-5.547-7.78z" clip-rule="evenodd"></path><path stroke="currentColor" d="M14.237 9.552a2.238 2.238 0 11-4.475-.001 2.238 2.238 0 014.475.001z" clip-rule="evenodd"></path></svg>
         </ion-icon>
         <input
+        value={searchText}
           type="text"
           placeholder="Search destination property ID"
           name="location"
           onChange={handleChange}
           required={true}
         />
+        
       </div>
 
       <div className="div2">
@@ -82,7 +117,7 @@ export const InputBox = () => {
           type="number"
           placeholder="Guests"
           name="guest"
-          onChange={handleChange}
+          // onChange={}
           required={true}
         />
       </div>
@@ -100,5 +135,14 @@ export const InputBox = () => {
         </Link>
       </div>
     </div>
+    <div className="search-results" >{search?.slice(0,3).map((data) => {
+      return (<div   >
+        <h3 value={`${data.city} ${data.country}`} onClick={(e)=>handleUpdateSearch(e)} >{data.city}, {data.country}</h3>
+        <p>{data.country}</p>
+      </div>)
+      
+    })}</div>
+    </>
+
   );
 };

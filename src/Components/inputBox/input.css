@@ -135,3 +135,30 @@
   background: #0c398d;
   transition: 0.5s;
 }
+
+.search-results {
+  background-color: white;
+  /* color: red; */
+  width: 25%;
+  /* padding: 0 3%; */
+}
+.search-results :hover   {
+  background-color: #245abc;
+  color: white;
+}
+.search-results :hover p{
+  color: white;
+}
+.search-results :hover h3{
+  color: white;
+}
+.search-results  h3{
+  color: #245abc;
+  margin: 0;
+  padding: 0 5%;
+}
+
+.search-results p{
+  color: #5e6d77;
+  padding: 0 5%;
+}

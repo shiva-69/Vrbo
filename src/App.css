@@ -1,5 +1,9 @@
-.Register-box{
+*{
   font-family: "FreightSansLF Pro", "Noto Sans JP", "Noto Sans KR", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "Segoe UI", Tahoma, -apple-system, Roboto, sans-serif;
+}
+.navbar-home{
+  margin: 0;
+  padding: 0;
 }
 
 Sign-in-box,
