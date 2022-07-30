@@ -1,5 +1,6 @@
 import "./search-box.css";
 import { useState } from "react";
+import { InputBox } from "../inputBox/inputBox";
 
 export const Search = () => {
   const [search, setSearch] = useState(false);
@@ -27,6 +28,7 @@ export const Search = () => {
         <div className={search ? "search-box-main active" : "search-box-main"}>
           <div className="serach-input-middle">
            {/* Write search code here */}
+           <InputBox/>
           </div>
         </div>
       </div>
