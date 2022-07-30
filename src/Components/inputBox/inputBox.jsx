@@ -19,10 +19,11 @@ export const InputBox = () => {
     // console.log()
     if((date.getDate()>=curDate.getDate() && date.getMonth() >=curDate.getMonth()) || date.getMonth() >curDate.getMonth()){
       setStartDate(date);
+      if((date.getDate()>endDate.getDate() && date.getMonth() >= endDate.getMonth()) || date.getMonth() >= endDate.getMonth()){
+        setEndDate(date);
+      }
     }
-    if((date.getDate()>endDate.getDate() && date.getMonth() >= endDate.getMonth()) || date.getMonth() >= endDate.getMonth()){
-      setEndDate(date);
-    }
+    
   }
 
   const handleEndDate = (date)=>{

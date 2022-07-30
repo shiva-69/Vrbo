@@ -2,7 +2,7 @@
     font-family: "FreightSansLF Pro", "Noto Sans JP", "Noto Sans KR", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "Segoe UI", Tahoma, -apple-system, Roboto, sans-serif;
 }
 
-Sign-in-box,
+
 .Register-box {
     
   border: 1px solid transparent;
@@ -39,6 +39,7 @@ Sign-in-box,
 }
 .Input-boxes-R::placeholder{
     font-size: 16px;
+    font-weight: 500;
 }
 
 #Sign-in-button,
@@ -55,6 +56,9 @@ Sign-in-box,
 }
 .Register-box p{
     width: 80%;
+}
+.Register-box > input{
+  font-size: 16px;
 }
 
 .Continue-with > img {
