@@ -3,6 +3,6 @@ const getCity = require("../Handlers/getCity");
 
 const getCityRouter = express.Router()
 
-getCityRouter.get('/city/:name', getCity)
+getCityRouter.get('/vrbo/:name', getCity)
 
 module.exports = getCityRouter;
