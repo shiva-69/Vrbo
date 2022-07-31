@@ -1,0 +1,69 @@
+.Sign-in-box{
+    font-family: "FreightSansLF Pro", "Noto Sans JP", "Noto Sans KR", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "Segoe UI", Tahoma, -apple-system, Roboto, sans-serif;
+}
+
+.Sign-in-box {
+    
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+}
+.Sign-in-box > h2{
+    
+    font-size: 1.5rem;
+    padding: 10px 5%;
+}
+
+
+.Sign-in-box > p {
+  align-self: center;
+  font-size: 0.875rem;
+}
+
+.Input-boxes {
+  width: 80%;
+  align-self: center;
+padding: 1.2rem;
+font-size: 1rem;
+margin-bottom: 6%;
+border-radius: 0.3rem;
+border: 1px solid #999999;
+}
+
+.Input-boxes::placeholder{
+    font-size: 16px;
+}
+
+#Sign-in-button{
+    width: 80%;
+    align-self: center;
+  padding: 1.15rem;
+  border-radius: 1.35rem;
+  background-color: #97afde;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.Sign-in-box p{
+    width: 80%;
+}
+
+.Continue-with > img {
+  width: 15%;
+}
+.Continue-with {
+  border: 1px solid transparent;
+  display: flex;
+  width: 30%;
+  margin: auto;
+  /* gap:1rem; */
+  justify-content: space-between;
+}
+
+.loader {
+  margin-top: 20%;
+  margin-left: 45%;
+}
