@@ -7,6 +7,7 @@ import "./login.css";
 import BackButton from "../../Components/BackButton";
 import { useDispatch } from "react-redux";
 import toggleAuth from "../../redux/auth/action";
+import GoogleAuth from "../../Components/context/googleAuth";
 <link rel="manifest" href="/manifest.webmanifest"></link>
 
 export const Login = () => {
@@ -22,36 +23,40 @@ export const Login = () => {
     setLoading(true);
     let mailCheck = false;
     let passCheck = false;
-    // console.log("clicked");
-    const res = await axios.get(
-      "https://still-badlands-85906.herokuapp.com/users"
-    );
-    const data = res.data;
-    dispatch(toggleAuth(data));
-    // console.log(data);
-    data.map((e) => {
-      if (e.email === email && e.password === pass) {
-        mailCheck = true;
-        passCheck = true;
-      } else if (e.email === email && e.password !== pass) {
-        mailCheck = true;
-        passCheck = false;
-      } else {
-        mailCheck = false;
-        passCheck = false;
-      }
-    });
 
-    if (mailCheck === true && passCheck === true) {
-      setLoading(false);
-      alert("Login Success");
-      navigate("/");
-      //navigate to home
-    } else if (mailCheck === true && passCheck === false) {
-      alert("Wrong Password");
-    } else {
-      alert("User does not exist");
+    const payload = {
+      email: email,
+      password: pass
     }
+    var emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var passValidate = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+if( email.match(emailValidate) &&
+pass.match(passValidate)){
+
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then((res) => res.json())
+        .then((res) => {
+          console.log(res)
+          navigate("/");
+        })
+  }
+  else if( !(email.match(emailValidate))){
+    window.alert("wrong password")
+
+  }else{
+    window.alert("worng E-mail id")
+  }
+    
+    // console.log(data);
+    
+
     setLoading(false);
   }
   return loading ? (
@@ -65,7 +70,7 @@ export const Login = () => {
     </div>
   ) : (
     <>
-    <BackButton/>
+      <BackButton />
       <div className="Sign-in-box">
         <h2>Sign in</h2>
         <input
@@ -111,15 +116,9 @@ export const Login = () => {
         </p>
 
         <p>or continue with</p>
-        <div className="Continue-with">
-          <img src="https://a.travel-assets.com/egds/marks/apple.svg" alt="" />
-          <img
-            src="https://a.travel-assets.com/egds/marks/facebook.svg"
-            alt=""
-          />
-          <img src="https://a.travel-assets.com/egds/marks/google.svg" alt="" />
-        </div>
-        <hr />
+
+        <div className="googleauth" ><GoogleAuth /></div>
+
       </div>
     </>
   );

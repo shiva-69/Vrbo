@@ -4,6 +4,7 @@ const {SECRET} = require("../Constants")
 
 const RegisterUser  = async (req, res,next) => {
     const {user} = req.body;
+    console.log(req.body);
 
     const alreadyRegistered = await UserModel.findOne({email : user.email});
     if(alreadyRegistered){

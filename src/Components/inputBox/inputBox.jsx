@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import setDate from "../../redux/search/action";
 import searchData from "../../redux/search/action";
+// import jwt from "jsonwebtoken"
 
 export const InputBox = () => {
   const curDate = new Date();
@@ -129,6 +130,8 @@ console.log("from redux",searchdata)
           
         </ion-icon>
         <input
+        max="25"
+        min="0"
           type="number"
           placeholder="Guests"
           name="guest"
