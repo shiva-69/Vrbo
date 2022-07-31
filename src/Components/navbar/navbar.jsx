@@ -38,7 +38,7 @@ console.log(auth,'in navbar auth')
             <ion-icon name="person-outline">
             <svg data-id="SVG_PERSON__24" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" d="M4.129 19.685a20.558 20.558 0 0011.884 1.17 20.558 20.558 0 003.858-1.17"></path><path stroke="currentColor" d="M11.907 11.906c-.992 0-2.002.19-2.976.595a7.777 7.777 0 00-4.802 7.184M12.093 11.906a7.78 7.78 0 017.778 7.778"></path><path stroke="currentColor" d="M15.982 7.837a4.07 4.07 0 01-4.07 4.07h-.01a4.07 4.07 0 01-4.068-4.07V6.82a4.07 4.07 0 014.069-4.069h.01a4.07 4.07 0 014.069 4.07v1.017z" clip-rule="evenodd"></path></svg>
             </ion-icon>
-            <p>User name</p>
+            <p>{auth.name}</p>
           </div>
                 : <LoginStatus/>
           }
