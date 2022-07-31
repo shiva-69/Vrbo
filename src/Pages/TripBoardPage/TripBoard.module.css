@@ -1,0 +1,110 @@
+.mainContainer
+{   
+    display: flex;
+    padding: 20px;
+    height: 100vh;
+    
+    background-color:rgb(243, 217, 217);
+}
+.leftContainer
+{   
+    width: 50%;
+    
+    padding: 20px;
+}
+.heading
+{
+    font-size: 30px;
+    font-weight: 600;
+}
+.WelcomeTitle
+{
+    font-size: 20px;
+    font-weight: 600;
+}
+.BookingsContainer
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.Bookings
+{
+    display: flex;
+    
+}
+.Bookings >div
+{
+    width: 50%;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.HotelImage
+{
+    width: 350px;
+    border-radius: 5px;
+}
+.rightContainer
+{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    
+}
+.rightImageBox
+{
+    display: flex;
+    
+}
+.rightImageLayoutFirst
+{
+    width: 52%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rightImageLayout
+{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+.rightImageLayout  div
+{
+    height: 100%;
+}
+.rightImageLayout > img
+{
+    width: 200px;
+    height: 150px;
+}
+.rightImageLayout > div >img
+{
+    width: 160px;
+    width: 120px;
+}
+.buttonContainer
+{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.buttonContainer button
+{
+    height: 60px;
+    width: 300px;
+    border-radius: 50px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background-color: rgba(62, 62, 250, 0.822);
+    cursor: pointer;
+}
