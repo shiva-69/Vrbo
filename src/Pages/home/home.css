@@ -1,0 +1,121 @@
+.home-main {
+  position: relative;
+}
+
+.middle-part-home {
+  padding: 1rem;
+  border-radius: 10px;
+  width: 90vw;
+  margin: auto;
+  margin-top: 0.2rem;
+  background: #fff;
+}
+
+.div-crsl {
+  /* border: 1px solid red; */
+  padding: 0.5rem;
+}
+
+.div-crsl h4 {
+  margin-top: 0.5rem;
+}
+.div-crsl p {
+  margin-top: 0.5rem;
+}
+
+.div-crsl img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.main-crsl-div {
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.div-crsl:hover img {
+  transition: 0.5s;
+  transform: scale(1.1);
+}
+
+.proeprty-home {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 600px;
+  background: url("https://odis.homeaway.com/odis/homepage/1bb3a26d-9eff-45c8-815e-3890dfdd514d.hp-lyp-large.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.background-color {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+  opacity: 0.5;
+}
+
+.buttonandtext {
+  /* border: 1px solid red; */
+  width: 40%;
+  height: 30%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.buttonandtext p {
+  color: white;
+  font-size: 1.8em;
+}
+
+.buttonandtext button {
+  padding: 1rem 1rem;
+  /* width: 30%; */
+  background: rgba(0, 0, 0, 0.63);
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.feedback {
+  position: fixed;
+  bottom: 0;
+  right: 6%;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback p {
+  background: #fff;
+  color: #245abc;
+  border: 1.5px solid #245abc;
+  font-size: 1.1em;
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  cursor: pointer;
+}
+
+.feedback p:hover {
+  transition: 0.5s;
+  padding-bottom: 1.5rem;
+  box-shadow: inset 0 0 0 1px #15326f;
+}
