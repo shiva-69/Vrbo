@@ -1,0 +1,19 @@
+.main-text-12 {
+  color: #245abc;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.main-text-12:hover {
+  color: #1c4695;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.homepage-text-1 {
+  padding: 32px;
+  color: #292929;
+  background: #f5f4f3;
+  font-size: 1.1rem;
+  padding: 2rem 10rem;
+}

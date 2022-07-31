@@ -9,6 +9,7 @@ const session = require('express-session');
 
 
 const CheckoutRouter = require("./Routers/CheckoutRouter");
+const getCityRouter = require("./Routers/getcity");
 
 
 const app=express();
@@ -22,6 +23,13 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: true }
   }))
+
+app.use((req,res,next) =>{
+    console.log('request receive')
+    next()
+}) 
+
+app.use(getCityRouter);
 app.use(HotelRouter);
 app.use(UserRouter);
 app.use(BookingRouter);
