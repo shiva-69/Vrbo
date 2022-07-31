@@ -1,11 +1,15 @@
 import React from "react";
 import {Box,Spinner } from "@chakra-ui/react";
+import { useToast } from '@chakra-ui/react'
+
 import PaymentLastPageStyles from "./Styles/PaymentLastPage.module.css";
 export function PaymentLastPage()
 {
     const [data,setData]=React.useState({});
     const [isLoading,setIsLoading]=React.useState(true);
     const [isError,setIsError]=React.useState(false);
+    const toast = useToast()
+    const [isSubmitted,setisSubmitted]=React.useState(false);
     const [formData,setFormData]=React.useState({
         first_name:"",
         last_name:"",
@@ -55,6 +59,8 @@ export function PaymentLastPage()
             zip_code:"",
             state:""
         });
+        
+        setisSubmitted(true);
     }
    
     React.useEffect(()=>
@@ -98,6 +104,7 @@ export function PaymentLastPage()
             <h1>Error...</h1>
         )
     }
+    
     const {first_name,last_name,card_number,expiry_date,cvv,street,country,city,zip_code,state}=formData;
     return(
         <div className={PaymentLastPageStyles.mainContainer}>
@@ -305,6 +312,16 @@ export function PaymentLastPage()
                             <img alt="Vrbo" src="https://csvcus.homeaway.com/rsrcs/stab-cms-resources/0.13.0/images/bwc/badge.svg" />
                             <a href="#">Book with Confidence Guarantee</a>
                         </div>
+                        {
+                           isSubmitted? toast({
+                                title: 'Booking Done !',
+                                description: "We have submitted your hotel booking.",
+                                position: 'top',
+                                status: 'success',
+                                duration: 9000,
+                                isClosable: true,
+                              }):<></>
+                        }
                     </div>
                 </div>
             </div>

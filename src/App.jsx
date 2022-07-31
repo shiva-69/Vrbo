@@ -4,9 +4,15 @@ import {Route,Routes} from "react-router-dom";
 import { CheckoutPage } from './Pages/CheckoutPage';
 import { PaymentBegin } from './Pages/PaymentPages/PaymentBegin';
 import { PaymentLastPage } from './Pages/PaymentPages/PaymentLastPage';
+
+import { TripBoard } from './Pages/TripBoardPage/TripBoard';
+
+
+
 import { Home } from './Pages/home/home';
 import Signup from './Pages/signup/Signup';
 import { Login } from './Pages/login/Login';
+
 
 
 function App() {
@@ -21,6 +27,9 @@ function App() {
     <Route path='/checkout' element = {<CheckoutPage/> }/>
     <Route path='/firstPayment' element={<PaymentBegin/>}/>
     <Route path="/finalPayment" element={<PaymentLastPage/>}/>
+
+    <Route path='/tripboard' element={<TripBoard/>}/>
+
     </Routes>
 
     
