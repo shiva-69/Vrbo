@@ -17,8 +17,6 @@ export const Navbar = () => {
     user?dispatch(toggleAuth(user)) : <div></div>;
   },[])
   
-
-console.log(auth,'in navbar auth')
   return (
     <div className="navbar-home">
       <div className="logo-main">

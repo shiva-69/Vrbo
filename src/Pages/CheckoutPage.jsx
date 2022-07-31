@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Navbar } from "../Components/navbar/navbar";
 import { Footer } from "./home/footer/Footer";
+import { useSelector } from "react-redux";
 
 
 const Container = styled.div`
@@ -300,12 +301,24 @@ div{
 `;
 
 export const CheckoutPage = () => {
+
+    const bookingDetails = useSelector(state => state.search.search);    
+    var month = bookingDetails.startDate.getUTCMonth() + 1;
+    var day = bookingDetails.startDate.getUTCDate();
+    var year = bookingDetails.startDate.getUTCFullYear();
+    let startDate = year + "/" + month + "/" + day;
+
+    month = bookingDetails.endDate.getUTCMonth() + 1;
+    day = bookingDetails.endDate.getUTCDate();
+    year = bookingDetails.endDate.getUTCFullYear();
+    let endDate = year + "/" + month + "/" + day;
+    
     return <>
     <Navbar/>
         <Container>
             <LeftOverlay>
                 <CityContainer>
-                    Maharastra / Pune / <span>Baner</span>
+                    India /{bookingDetails.city}/ <span>Baner</span>
                 </CityContainer>
                 <HeadlineOverlay>
                     <HeadlineContainer>Homestay @ Baner (Ensuite)</HeadlineContainer>
@@ -374,16 +387,18 @@ export const CheckoutPage = () => {
                     <CheckOverlay>
                     <CheckInContainer>
                             <div style={{fontSize: "12px"}}>Check In</div>
-                            <div style={{color: "#2474de", fontWeight: "500",cursor: "pointer"}}>Date</div>
+                            <div style={{color: "#2474de", fontWeight: "500",cursor: "pointer"}}>{startDate}</div>
                         </CheckInContainer>
                         <CheckoutContainer>
                             <div style={{fontSize: "12px"}}>Check Out</div>
-                            <div style={{color: "#2474de", fontWeight: "500",cursor: "pointer"}}>Date</div>
+                            <div style={{color: "#2474de", fontWeight: "500",cursor: "pointer"}}>{endDate}</div>
                         </CheckoutContainer>
                     </CheckOverlay>
                     <GuestContainer>
                         <div style={{fontSize: "12px"}}>Guests</div>
-                        <div style={{color: "#2474de", fontWeight: "500",cursor: "pointer"}}>1 guest</div>
+                        <div style={{color: "#2474de", fontWeight: "500",cursor: "pointer"}}>
+                            {bookingDetails.guest ? `${bookingDetails.guest} guest` : "0 guest"}
+                            </div>
                     </GuestContainer>
                 </AddInfo>
                 <PaymentOverlay>
