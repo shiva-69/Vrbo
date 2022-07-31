@@ -32,7 +32,7 @@ export const Navbar = () => {
         </div>
 
           {
-            true ? <div
+            auth ? <div
             className="list-menu"
           >
             <ion-icon name="person-outline">
