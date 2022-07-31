@@ -6,6 +6,56 @@ export function PaymentLastPage()
     const [data,setData]=React.useState({});
     const [isLoading,setIsLoading]=React.useState(true);
     const [isError,setIsError]=React.useState(false);
+    const [formData,setFormData]=React.useState({
+        first_name:"",
+        last_name:"",
+        card_number:"",
+        expiry_date:"",
+        cvv:"",
+        street:"",
+        country:"",
+        city:"",
+        zip_code:"",
+        state:""
+    });
+    const handleChange=(e)=>
+    {
+        let {name,value}=e.target;
+
+        setFormData({...formData,[name]:value});
+        console.log(name,value)
+    }
+    const handleSubmit=(e)=>
+    {
+        e.preventDefault();
+        let bookingData={
+            checkout_data:data,
+            formData:formData
+        }
+        console.log(formData);
+        fetch("http://localhost:3001/bookings",{
+            method:"POST",
+            body:JSON.stringify(bookingData),
+            headers:{"Content-type":"Application/json"}
+        })
+        .then((res)=>res.json())
+        .then((res)=>
+        {
+            console.log(res);
+        })
+        setFormData({
+            first_name:"",
+            last_name:"",
+            card_number:"",
+            expiry_date:"",
+            cvv:"",
+            street:"",
+            country:"",
+            city:"",
+            zip_code:"",
+            state:""
+        });
+    }
    
     React.useEffect(()=>
     {   
@@ -48,6 +98,7 @@ export function PaymentLastPage()
             <h1>Error...</h1>
         )
     }
+    const {first_name,last_name,card_number,expiry_date,cvv,street,country,city,zip_code,state}=formData;
     return(
         <div className={PaymentLastPageStyles.mainContainer}>
             
@@ -88,29 +139,63 @@ export function PaymentLastPage()
                         </div>
                         <div className={PaymentLastPageStyles.CardDetailsBox}>
                             <div className={PaymentLastPageStyles.CardDetails}>
-                                <input type="text" placeholder="First Name" />
-                                <input type="text" placeholder="Last Name" />
+                                <input type="text" 
+                                       placeholder="First Name" 
+                                       name="first_name"
+                                       value={first_name}
+                                       onChange={(e)=>(handleChange(e))} />
+                                <input type="text" 
+                                       placeholder="Last Name"
+                                       name="last_name"
+                                       value={last_name}
+                                       onChange={(e)=>(handleChange(e))}
+                                         />
                             </div>
                             <div className={PaymentLastPageStyles.CardDetails}>
-                                <input type="text" placeholder="Card Number" />
+                                <input type="text" 
+                                        placeholder="Card Number"
+                                        name="card_number"
+                                        value={card_number}
+                                        onChange={(e)=>(handleChange(e))} />
                             </div>
                             <div className={PaymentLastPageStyles.CardDetails}>
-                                <input type="date" placeholder="Expiration MM/YY" />
-                                <input type="text" placeholder="Security code" />
+                                <input type="date" 
+                                        placeholder="Expiration MM/YY"
+                                        name="expiry_date"
+                                        value={expiry_date}
+                                        onChange={(e)=>(handleChange(e))} />
+                                <input type="text"
+                                         placeholder="Security code"
+                                         name="cvv"
+                                         value={cvv}
+                                         onChange={(e)=>(handleChange(e))} />
                             </div>
                         </div>
                         <div className={PaymentLastPageStyles.BillingAddressBox}>
                             <h4>Billing address</h4>
                             <div className={PaymentLastPageStyles.CardDetails}>
-                                <input type="text" placeholder="Street" />
-                                <select name="" id="">
+                                <input type="text"
+                                         placeholder="Street"
+                                         name="street"
+                                         value={street}
+                                         onChange={(e)=>(handleChange(e))} />
+                                <select name="country" value={country} onChange={(e)=>(handleChange(e))} id="">
+                                    <option value=""></option>
                                     <option value="india">India</option>
                                 </select>
                             </div>
                             <div className={PaymentLastPageStyles.CardDetails}>
-                                <input type="text" placeholder="City" />
-                                <input type="text" placeholder="ZIP Code" />
-                                <select name="" id="" placeholder="State">
+                                <input type="text"
+                                         placeholder="City" 
+                                         name="city"
+                                         value={city}
+                                         onChange={(e)=>(handleChange(e))}/>
+                                <input type="text" 
+                                        placeholder="ZIP Code"
+                                        name="zip_code"
+                                        value={zip_code}
+                                        onChange={(e)=>(handleChange(e))} />
+                                <select name="state" value={state}  onChange={(e)=>(handleChange(e))} id="" placeholder="State">
                                     <option value="">State</option>
                                     <option value="Maharashtra">Maharashtra</option>
                                     <option value="Delhi">Delhi</option>
@@ -126,7 +211,7 @@ export function PaymentLastPage()
                         <p>When you book this property, oyur reservation will be confirmed instantly</p>
                     </div>
                     <div className={PaymentLastPageStyles.buttonContainer}>
-                        <button >Book Now</button>
+                        <button onClick={(e)=>(handleSubmit(e))} >Book Now</button>
                     </div>
                 </div>
                 <div className={PaymentLastPageStyles.rightContainer}>
