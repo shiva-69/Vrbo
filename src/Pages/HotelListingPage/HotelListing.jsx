@@ -3,6 +3,8 @@ import HotelListingStyles from "./HotelListing.module.css";
 import StarsRating from 'stars-rating';
 import heart from "../HotelListingPage/heart.png";
 import {Box,Spinner } from "@chakra-ui/react";
+import { Footer } from "../home/footer/Footer";
+import { Navbar } from "../../Components/navbar/navbar";
 function HotelListing()
 {
     const [hotels,setHotel]=React.useState([]);
@@ -49,7 +51,9 @@ function HotelListing()
         )
     }
 
-    return (
+    return ( 
+        <>
+        <Navbar/>
         <div className={HotelListingStyles.mainContainer}>
             <div className={HotelListingStyles.resultsContainer}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -76,7 +80,7 @@ function HotelListing()
                 </div>
                 
                 {  hotels.map((item)=>
-                ( <>
+                ( 
                     <div key={item._id} className={HotelListingStyles.hoteldiv}>
                         <img className={HotelListingStyles.hotelImage} src={item.image[0]} alt="" />
                         <div>
@@ -100,9 +104,7 @@ function HotelListing()
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                  </>  
+                    </div> 
                 ))
                     
                 }
@@ -111,7 +113,8 @@ function HotelListing()
                 <iframe  title="1" src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCmNx0FqAPkI9rcXbzErEMQAh4bMkQwn1E&q=${city}`} frameBorder=""className={HotelListingStyles.map}></iframe>
             </div>
         </div>
-        
+        {/* <Footer/> */}
+        </>
         
     )
 }
