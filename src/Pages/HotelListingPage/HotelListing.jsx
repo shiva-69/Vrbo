@@ -49,7 +49,7 @@ function HotelListing()
         )
     }
 
-    return (
+    return ( 
         <div className={HotelListingStyles.mainContainer}>
             <div className={HotelListingStyles.resultsContainer}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -76,7 +76,7 @@ function HotelListing()
                 </div>
                 
                 {  hotels.map((item)=>
-                ( <>
+                ( 
                     <div key={item._id} className={HotelListingStyles.hoteldiv}>
                         <img className={HotelListingStyles.hotelImage} src={item.image[0]} alt="" />
                         <div>
@@ -100,9 +100,7 @@ function HotelListing()
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                  </>  
+                    </div> 
                 ))
                     
                 }
