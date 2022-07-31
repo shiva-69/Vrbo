@@ -1,6 +1,6 @@
 import React from "react";  
 import HotelListingStyles from "./HotelListing.module.css";
-import StarsRating from 'stars-rating'
+import StarsRating from 'stars-rating';
 import heart from "../HotelListingPage/heart.png";
 import {Box,Spinner } from "@chakra-ui/react";
 function HotelListing()

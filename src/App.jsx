@@ -6,6 +6,8 @@ import { PaymentBegin } from './Pages/PaymentPages/PaymentBegin';
 import { PaymentLastPage } from './Pages/PaymentPages/PaymentLastPage';
 
 
+
+
 function App() {
   return (
     <>
@@ -14,6 +16,7 @@ function App() {
       
     
     {/* <Route path='/' element={<HotelListing/>}/>
+    <Route path='/results' element={<HotelListing/>}/>
     <Route path='/firstPayment' element={<PaymentBegin/>}/>
     <Route path="/finalPayment" element={<PaymentLastPage/>}/> */}
 
