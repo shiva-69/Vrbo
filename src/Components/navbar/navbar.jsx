@@ -86,7 +86,7 @@ console.log(auth,'in navbar auth')
       </div>
 
       <div className="prop">
-        <p>List your Property</p>
+        <p id="inputP" >List your Property</p>
       </div>
     </div>
   );
