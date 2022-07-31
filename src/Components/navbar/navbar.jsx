@@ -11,7 +11,7 @@ export const Navbar = () => {
   let {auth} = useSelector(store => store.auth)
   
 
-
+console.log(auth,'in navbar auth')
   return (
     <div className="navbar-home">
       <div className="logo-main">
@@ -32,7 +32,7 @@ export const Navbar = () => {
         </div>
 
           {
-            auth ? <div
+            auth.length ? <div
             className="list-menu"
           >
             <ion-icon name="person-outline">

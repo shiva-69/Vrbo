@@ -1,8 +1,9 @@
 export const TOGGLEAUTH = "TOGGLEAUTH";
 
-const toggleAuth = () =>{
+const toggleAuth = (payload) =>{
     return {
-        type : TOGGLEAUTH
+        type : TOGGLEAUTH,
+        payload,
     }
 }
 

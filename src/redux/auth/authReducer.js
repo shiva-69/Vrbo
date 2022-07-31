@@ -1,11 +1,11 @@
 import { TOGGLEAUTH } from "./action";
 
 let auth = false
-const authReducer = (store = {auth},{type})=>{
+const authReducer = (store = {auth : {}},{type,payload})=>{
     switch (type){
         case TOGGLEAUTH :
             return{
-                auth : auth ? false : true, 
+                auth : auth ? {} : payload, 
             }
         default :
         return store;

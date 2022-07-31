@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Spinner from "react-spinner-material";
 import "./login.css";
 import BackButton from "../../Components/BackButton";
+import { useDispatch } from "react-redux";
+import toggleAuth from "../../redux/auth/action";
 <link rel="manifest" href="/manifest.webmanifest"></link>
 
 export const Login = () => {
@@ -12,6 +14,10 @@ export const Login = () => {
   const [pass, setPass] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+
+
   async function checkLogin() {
     setLoading(true);
     let mailCheck = false;
@@ -21,6 +27,7 @@ export const Login = () => {
       "https://still-badlands-85906.herokuapp.com/users"
     );
     const data = res.data;
+    dispatch(toggleAuth(data));
     // console.log(data);
     data.map((e) => {
       if (e.email === email && e.password === pass) {
