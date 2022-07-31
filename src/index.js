@@ -5,20 +5,26 @@ import App from './App.jsx';
 import { BrowserRouter } from "react-router-dom"
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { AuthContextProvider } from './Components/context/authContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import {ChakraProvider } from "@chakra-ui/react";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+<ChakraProvider>
+    <BrowserRouter>
+    <AuthContextProvider>
+        <GoogleOAuthProvider clientId='524266368211-cvp7frjeg3bmubg3rokhsl139skj1mbr.apps.googleusercontent.com'>
+        <Provider store={store} >
+            <App />
+        </Provider>
+        </GoogleOAuthProvider>
+        </AuthContextProvider>
+    </BrowserRouter>
     
-
-    <Provider store = {store}>
-    <ChakraProvider>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
     </ChakraProvider>
-    </Provider>
+
     
   
 );

@@ -1,14 +1,21 @@
-import { useState } from "react";
+import React ,{ useState } from "react";
 import { Link } from "react-router-dom";
 import LoginStatus from "./LoginStatus";
 import "./module.navbar.css";
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
 import store from "../../redux/store";
+import toggleAuth from "../../redux/auth/action";
+// import jwt from "jsonwebtoken"
 
 export const Navbar = () => {
   const [showLogin, setshowLogin] = useState(false);
   const [help, setHelp] = useState(false);
   let {auth} = useSelector(store => store.auth)
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    let user = JSON.parse(localStorage.getItem('userId'));
+    user?dispatch(toggleAuth(user)) : <div></div>;
+  },[])
   
 
 console.log(auth,'in navbar auth')
@@ -28,17 +35,17 @@ console.log(auth,'in navbar auth')
           <ion-icon name="heart-outline">
           <svg data-id="SVG_HEART__24" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" d="M12 6.707S13.487 4.1 16.625 4.1c2.738 0 4.625 2.243 4.625 4.907 0 3.764-3.939 6.063-9.25 10.893-5.311-4.83-9.25-7.129-9.25-10.893C2.75 6.343 4.637 4.1 7.375 4.1 10.513 4.1 12 6.707 12 6.707z" clip-rule="evenodd"></path></svg>
           </ion-icon>
-          <a href="#">Trip Boards</a>
+          <Link to="/tripboard">Trip Boards</Link>
         </div>
 
           {
-            auth.length ? <div
+            auth.status ? <div
             className="list-menu"
           >
             <ion-icon name="person-outline">
             <svg data-id="SVG_PERSON__24" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" d="M4.129 19.685a20.558 20.558 0 0011.884 1.17 20.558 20.558 0 003.858-1.17"></path><path stroke="currentColor" d="M11.907 11.906c-.992 0-2.002.19-2.976.595a7.777 7.777 0 00-4.802 7.184M12.093 11.906a7.78 7.78 0 017.778 7.778"></path><path stroke="currentColor" d="M15.982 7.837a4.07 4.07 0 01-4.07 4.07h-.01a4.07 4.07 0 01-4.068-4.07V6.82a4.07 4.07 0 014.069-4.069h.01a4.07 4.07 0 014.069 4.07v1.017z" clip-rule="evenodd"></path></svg>
             </ion-icon>
-            <p>{auth.name}</p>
+            <p>{auth.name? auth.name : "username"}</p>
           </div>
                 : <LoginStatus/>
           }
