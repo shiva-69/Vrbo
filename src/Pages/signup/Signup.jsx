@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Spinner from "react-spinner-material";
 import "./signup.css";
+import GoogleAuth from "../../Components/context/googleAuth";
 
 
 
@@ -25,13 +26,15 @@ const Signup = ()=>{
     const navigate = useNavigate();
     function registerUser() {
       setLoading(true);
-      let data = {
+      const user = { 
+        name : first_name + ' ' + last_name ,
         email: email,
-        first_name: first_name + ' ' + last_name ,
         password: pass,
       };
-  
-      // console.log(data)
+      let data = {
+        user : user,
+      }
+      console.log(data)
   
       if (
         email.match(emailValidate) &&
@@ -39,8 +42,18 @@ const Signup = ()=>{
         last_name !== "" &&
         pass.match(passValidate)
       ) {
-        axios.post("https://still-badlands-85906.herokuapp.com/users", data);
-        navigate("/login");
+        fetch("http://localhost:3001/register",{
+          method : "POST",
+          body : JSON.stringify(data),
+          headers : {
+            'content-type': 'application/json'
+          }
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res)
+          navigate("/login");
+        })
       } else if (!email.match(emailValidate)) {
         alert("Please enter a valid email");
       } else if (!pass.match(passValidate)) {
@@ -117,7 +130,7 @@ const Signup = ()=>{
           <p>or continue with</p>
   
           
-          <hr />
+          <div className="googleauth" ><GoogleAuth/></div>
         </div>
       </>
     );
