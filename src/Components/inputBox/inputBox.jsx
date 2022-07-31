@@ -6,18 +6,33 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { Link } from "react-router-dom";
 // import { getLocation } from "../location_redux/actions";
-// import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import setDate from "../../redux/search/action";
+import searchData from "../../redux/search/action";
 
 export const InputBox = () => {
-  const [text, setText] = useState({});
+  const curDate = new Date();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date())
-  const curDate = new Date();
   const [search,setSearch] = useState([])
   const [searchText,setSearchText] = useState("")
   const [fetchData,setFetchData] = useState(true);
+  const [guest,setGuest] =  useState()
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const searchdata = useSelector(store => store)
+console.log("from redux",searchdata)
+  const handleSearchData = ()=>{
+    const payload = {
+      city : searchText,
+      startDate : startDate,
+      endDate : endDate,
+      guest : guest
+    }
+
+    dispatch(searchData(payload))
+
+  }
   const handleStartDate = (date)=>{
     // console.log()
     if((date.getDate()>=curDate.getDate() && date.getMonth() >=curDate.getMonth()) || date.getMonth() >curDate.getMonth()){
@@ -117,7 +132,7 @@ export const InputBox = () => {
           type="number"
           placeholder="Guests"
           name="guest"
-          // onChange={}
+          onChange={(e)=> setGuest(e.target.value)}
           required={true}
         />
       </div>
@@ -125,10 +140,8 @@ export const InputBox = () => {
       <div id="button-search">
         <ion-icon name="search-outline"></ion-icon>
         <Link
-          onClick={() => {
-            // dispatch(getLocation(text));
-          }}
-          to="/results"
+          onClick={handleSearchData}
+          to="/"
           className="link"
         >
           Search

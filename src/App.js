@@ -4,14 +4,20 @@ import { Home } from './Pages/home/home';
 import Signup from './Pages/signup/Signup';
 import { Login } from './Pages/login/Login';
 import { Navbar } from './Components/navbar/navbar';
+import { Route, Routes } from 'react-router-dom';
 // import S from './Components/search';
 
 function App() {
   return (<>
-  <Navbar/>
-    <Home/>
-    <Login/>
-    <Signup/>
+  
+  <Routes>
+    <Route path="/login" element={<Login/>} ></Route>
+    <Route path="/signup" element={<Signup/>} ></Route>
+    <Route path="/" element={<Home/>} ></Route>
+  </Routes>
+    
+  {/* <Home/> */}
+    
     
   </>);
 }

@@ -93,6 +93,13 @@
   padding: 15px 15px;
   border-radius: 8px;
 }
+.user-name{
+  color: #15326f;
+}
+.user-name > p{
+  display: inline;
+  padding-bottom: 5px;
+}
 
 .drop a:hover {
   background: #f9f8f7;

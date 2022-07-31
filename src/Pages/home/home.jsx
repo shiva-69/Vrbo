@@ -4,6 +4,7 @@ import Carousel from "react-elastic-carousel";
 import Item from "./crsl/img_div";
 import "./home.css";
 import { Footer } from "./footer/Footer";
+import { Navbar } from "../../Components/navbar/navbar";
 // import Signup from "./signup/Signup";
 
 export const Home = () => {
@@ -16,7 +17,7 @@ export const Home = () => {
 
   return (
     <div className="home-main">
-      
+      <Navbar/>
       <Search />
 
       <div className="middle-part-home">
