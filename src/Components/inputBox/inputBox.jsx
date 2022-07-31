@@ -141,7 +141,7 @@ console.log("from redux",searchdata)
         <ion-icon name="search-outline"></ion-icon>
         <Link
           onClick={handleSearchData}
-          to="/"
+          to="/results"
           className="link"
         >
           Search

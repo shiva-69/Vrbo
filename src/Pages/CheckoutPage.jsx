@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Navbar } from "../Components/navbar/navbar";
+import { Footer } from "./home/footer/Footer";
+
 
 const Container = styled.div`
 width: 100vw;
@@ -298,6 +301,7 @@ div{
 
 export const CheckoutPage = () => {
     return <>
+    <Navbar/>
         <Container>
             <LeftOverlay>
                 <CityContainer>
@@ -417,5 +421,6 @@ export const CheckoutPage = () => {
             </RightOverlay>
             
         </Container>
+        <Footer/>
     </>
 }
