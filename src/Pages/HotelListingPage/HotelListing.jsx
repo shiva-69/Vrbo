@@ -3,15 +3,41 @@ import HotelListingStyles from "./HotelListing.module.css";
 import StarsRating from 'stars-rating';
 import heart from "../HotelListingPage/heart.png";
 import {Box,Spinner } from "@chakra-ui/react";
+import { Footer } from "../home/footer/Footer";
+import { Navbar } from "../../Components/navbar/navbar";
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 function HotelListing()
 {
     const [hotels,setHotel]=React.useState([]);
     const [isLoading,setIsLoading]=React.useState(true);
     const [isError,setIsError]=React.useState(false);
-    let city="Delhi";
+    const navigate = useNavigate();
+    let city = useSelector(state => state.search.search.city);
+    city = capitalizeFirstLetter(city);
+    // for(let i = 0; i < city.length; i++){
+    //     city = city.split("")
+       
+    //         if(i == 0){
+    //             city += city[i].toUpperCase();
+    //         }
+    //         else{
+    //             city += city[i]
+    //         }
+    //     city = city.join("");
+    // }
+    
+
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+    // console.log(city);
+
+
     React.useEffect(()=>
     {
-        fetch(`http://localhost:3001/hotel/${city}`)
+        fetch(`http://localhost:3001/hotel/Delhi`)
         .then((res)=>res.json())
         .then((res)=>
         {  
@@ -26,6 +52,13 @@ function HotelListing()
         })
         .finally(()=>setIsLoading(false));
     },[city])
+
+    const handleNavigation = (id) => {
+        console.log(id)
+        navigate("/checkout", {state : {id: id}});
+    }
+
+
     if(isLoading)
     {
         return (
@@ -49,7 +82,9 @@ function HotelListing()
         )
     }
 
-    return (
+    return ( 
+        <>
+        <Navbar/>
         <div className={HotelListingStyles.mainContainer}>
             <div className={HotelListingStyles.resultsContainer}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -76,8 +111,8 @@ function HotelListing()
                 </div>
                 
                 {  hotels.map((item)=>
-                ( <>
-                    <div key={item._id} className={HotelListingStyles.hoteldiv}>
+                ( 
+                    <div key={item._id} className={HotelListingStyles.hoteldiv} onClick = {(e) => handleNavigation(item.id)}>
                         <img className={HotelListingStyles.hotelImage} src={item.image[0]} alt="" />
                         <div>
                             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -100,9 +135,7 @@ function HotelListing()
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                  </>  
+                    </div> 
                 ))
                     
                 }
@@ -111,7 +144,8 @@ function HotelListing()
                 <iframe  title="1" src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCmNx0FqAPkI9rcXbzErEMQAh4bMkQwn1E&q=${city}`} frameBorder=""className={HotelListingStyles.map}></iframe>
             </div>
         </div>
-        
+        {/* <Footer/> */}
+        </>
         
     )
 }

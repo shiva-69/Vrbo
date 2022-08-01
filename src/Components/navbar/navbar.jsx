@@ -16,12 +16,15 @@ export const Navbar = () => {
     let user = JSON.parse(localStorage.getItem('userId'));
     user?dispatch(toggleAuth(user)) : <div></div>;
   },[])
+
   const handleLogout = () =>{
     localStorage.removeItem('userId');
     dispatch(toggleAuth())
   }
 
-console.log(auth,'in navbar auth')
+
+  
+
   return (
     <div className="navbar-home">
       <div className="logo-main">

@@ -21,6 +21,14 @@ async function getBookingData(req,res,next)
     res.status(200).json({data:bookingData});
 
 }
+async function deleteData(req,res,next)
+{
+    const {id}=req.params;
+    await Bookings.findOneAndDelete({_id:id});
+    
+    res.status(200).send("Data deleted");
+}
 
 module.exports={createBooking,
-                getBookingData}
+                getBookingData,
+                deleteData}

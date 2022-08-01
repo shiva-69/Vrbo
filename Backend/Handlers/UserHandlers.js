@@ -37,6 +37,7 @@ const Login = async (req, res, send) => {
             let encryptedToken = jwt.sign({
                 id: existingUser._id,
                 email: existingUser.email,
+                name: existingUser.name,
                 password: existingUser.password
             }, SECRET);
             return res.status(200).send({

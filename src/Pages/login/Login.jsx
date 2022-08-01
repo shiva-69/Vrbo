@@ -8,17 +8,26 @@ import BackButton from "../../Components/BackButton";
 import { useDispatch } from "react-redux";
 import toggleAuth from "../../redux/auth/action";
 import GoogleAuth from "../../Components/context/googleAuth";
+
 import { Warning } from "../../Components/warning/Warning";
 <link rel="manifest" href="/manifest.webmanifest"></link>
+
+import jwt_decode from "jwt-decode";
+<link rel="manifest" href="/manifest.webmanifest"></link>;
+
 
 export const Login = () => {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const dispatch = useDispatch()
   const [wrong,setWrong] = useState(false);
   const [warrningMsg,setWarrningMsg] = useState()
+
+
+  const dispatch = useDispatch();
 
 
   async function checkLogin() {
@@ -28,10 +37,11 @@ export const Login = () => {
 
     const payload = {
       email: email,
-      password: pass
-    }
+      password: pass,
+    };
     var emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var passValidate = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
 
     if (!email || !pass ){
       setWrong(true)
@@ -53,9 +63,24 @@ pass.match(passValidate)){
       }
     })
     .then((res) => res.json())
+
+    if (email.match(emailValidate) && pass.match(passValidate)) {
+      fetch("http://localhost:3001/login", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+
         .then((res) => {
           console.log(res)
+          let decoded = jwt_decode(res.token);
+          dispatch(toggleAuth(decoded));
+          localStorage.setItem("userId", JSON.stringify(decoded));
           navigate("/");
+
         })
   }
   else if( !(email.match(emailValidate))){
@@ -75,8 +100,16 @@ pass.match(passValidate)){
         )
   }
     
+
+        });
+    } else if (!email.match(emailValidate)) {
+      window.alert("wrong password");
+    } else {
+      window.alert("worng E-mail id");
+    }
+
+
     // console.log(data);
-    
 
     setLoading(false);
   }
@@ -143,8 +176,9 @@ pass.match(passValidate)){
 
         <p>or continue with</p>
 
-        <div className="googleauth" ><GoogleAuth /></div>
-
+        <div className="googleauth">
+          <GoogleAuth />
+        </div>
       </div>
     </>
   );
