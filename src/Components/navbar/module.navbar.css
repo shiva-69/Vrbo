@@ -146,6 +146,12 @@
   border-radius: 30px;
   box-shadow: inset 0 0 0 1px #15326f;
 }
+
+.prop p{
+  padding: 7px;
+}
+
 #inputP{
   padding: 8px;
 }
+
