@@ -8,15 +8,27 @@ import BackButton from "../../Components/BackButton";
 import { useDispatch } from "react-redux";
 import toggleAuth from "../../redux/auth/action";
 import GoogleAuth from "../../Components/context/googleAuth";
+
+import { Warning } from "../../Components/warning/Warning";
+<link rel="manifest" href="/manifest.webmanifest"></link>
+
 import jwt_decode from "jwt-decode";
 <link rel="manifest" href="/manifest.webmanifest"></link>;
+
 
 export const Login = () => {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const dispatch = useDispatch()
+  const [wrong,setWrong] = useState(false);
+  const [warrningMsg,setWarrningMsg] = useState()
+
+
   const dispatch = useDispatch();
+
 
   async function checkLogin() {
     setLoading(true);
@@ -30,6 +42,28 @@ export const Login = () => {
     var emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var passValidate = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 
+
+    if (!email || !pass ){
+      setWrong(true)
+      setTimeout(() => {
+        setWrong(false)
+      },3000);
+      setWarrningMsg(
+        "Please fill the details"
+      )
+     }
+        else if( email.match(emailValidate) &&
+pass.match(passValidate)){
+
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then((res) => res.json())
+
     if (email.match(emailValidate) && pass.match(passValidate)) {
       fetch("http://localhost:3001/login", {
         method: "POST",
@@ -39,18 +73,41 @@ export const Login = () => {
         },
       })
         .then((res) => res.json())
+
         .then((res) => {
           console.log(res)
           let decoded = jwt_decode(res.token);
           dispatch(toggleAuth(decoded));
           localStorage.setItem("userId", JSON.stringify(decoded));
           navigate("/");
+
+        })
+  }
+  else if( !(email.match(emailValidate))){
+    setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        setWarrningMsg("Please enter a valid email")
+
+  }else{
+    setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        setWarrningMsg(
+          "Password should contain 6-20 characters,one number, one lowercase and an uppercase character"
+        )
+  }
+    
+
         });
     } else if (!email.match(emailValidate)) {
       window.alert("wrong password");
     } else {
       window.alert("worng E-mail id");
     }
+
 
     // console.log(data);
 
@@ -68,6 +125,11 @@ export const Login = () => {
   ) : (
     <>
       <BackButton />
+      <div className="notification">
+        {
+          wrong? <Warning message={warrningMsg} /> : <div></div>
+        }
+        </div>
       <div className="Sign-in-box">
         <h2>Sign in</h2>
         <input
@@ -109,7 +171,7 @@ export const Login = () => {
         <p>Forgot password ?</p>
         <p>
           Don't have an account?
-          <Link to="/register">Create one</Link>
+          <Link to="/signup">Create one</Link>
         </p>
 
         <p>or continue with</p>

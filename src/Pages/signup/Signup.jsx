@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Spinner from "react-spinner-material";
 import "./signup.css";
 import GoogleAuth from "../../Components/context/googleAuth";
+import { Warning } from "../../Components/warning/Warning";
 
 
 
@@ -16,6 +17,9 @@ const Signup = ()=>{
     const [last_name, setLastName] = useState();
     const [pass, setPass] = useState();
     const [loading, setLoading] = useState(false);
+    const [wrong,setWrong] = useState(false);
+    const [warrningMsg,setWarrningMsg] = useState()
+    
     var emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   
     //name should only contain letters
@@ -35,13 +39,22 @@ const Signup = ()=>{
         user : user,
       }
       console.log(data)
-  
-      if (
+   if (!email || !pass || !first_name ){
+    setWrong(true)
+    setTimeout(() => {
+      setWrong(false)
+    },3000);
+    setWarrningMsg(
+      "Please fill the details"
+    )
+   }
+      else if (
         email.match(emailValidate) &&
         first_name !== "" &&
         last_name !== "" &&
         pass.match(passValidate)
       ) {
+        console.log('fetching')
         fetch("http://localhost:3001/register",{
           method : "POST",
           body : JSON.stringify(data),
@@ -55,11 +68,29 @@ const Signup = ()=>{
           navigate("/login");
         })
       } else if (!email.match(emailValidate)) {
-        alert("Please enter a valid email");
+        setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        
+        setWarrningMsg("Please enter a valid email");
       } else if (!pass.match(passValidate)) {
-        alert(
+
+        setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        setWarrningMsg(
           "Password should contain 6-20 characters,one number, one lowercase and an uppercase character"
         );
+      }else{
+        setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        setWarrningMsg(
+          "Please fill the details"
+        )
       }
       setLoading(false);
     }
@@ -75,9 +106,15 @@ const Signup = ()=>{
     ) : (
       <>
         <BackButton/>
+        <div className="notification">
+        {
+          wrong? <Warning message={warrningMsg} /> : <div></div>
+        }
+        </div>
         <div className="Register-box">
           <h2>Create an account</h2>
           <input
+          value={email}
             type="text"
             placeholder="Email address"
             className="Input-boxes-R"
@@ -85,6 +122,7 @@ const Signup = ()=>{
               setEmail(e.target.value);
             }}
           />
+          {/* <span>wrong email</span> */}
   
           <input
             type="text"
