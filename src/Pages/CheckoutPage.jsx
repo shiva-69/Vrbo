@@ -78,47 +78,41 @@ button{
 }
 `
 const PhotoGridContainer = styled.div`
-display: flex;
+display : flex;
 gap: 10px;
-box-sizing: border-box;
-img{
-    transition: border-radius .25s,box-shadow .25s;
-    &:hover {
-        border-radius: 5px;
-    }
-}
 `
 const PhotoGridLeft =  styled.div`
-flex-basis: 65%;   
-box-sizing: border-box; 
+flex-basis: 65%;
+height: 400px;
+box-sizing: border-box;
+img{
+    max-height: 410px;
+    width: 100%;
+}
 `
 const PhotoGridRight = styled.div`
 flex-basis: 35%;
-box-sizing: border-box;
-`
-const PhotoRightContainer = styled.div`
 display: flex;
 flex-direction: column;
+height: 400px;
 gap: 10px;
-box-sizing: border-box;
-// img{
-//     box-sizing: border-box;
-//     height: 60%;
-//     width: 100%;
-// };
-div{
-    gap: 10px;
-}
 `
+
 const UpperPhotoContainer = styled.div`
+height: 50%;
 img{
-    height: 17rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
+
 `
 const BottomPhotoContainer = styled.div`
-display: flex;
+height: 50%;
 img{
-    height: 10rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 `
 const RentalPrice = styled.div`
@@ -396,20 +390,13 @@ export const CheckoutPage = () => {
                 </HeadlineOverlay>
                 <PhotoGridContainer>
                     <PhotoGridLeft>
-                    <img alt="Spacious room for 2" src="https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/c3a80d74.f10.jpg"/>
+                    <img alt="Spacious room for 2" src={data.image[0]}/>
                     </PhotoGridLeft>
                     <PhotoGridRight>
-                        <PhotoRightContainer>
-                            <UpperPhotoContainer><img alt="Comfortable king size bed  , Dressing cupboard and wardrobe" src="https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/63d4c51f.f10.jpg"/></UpperPhotoContainer>
+                            <UpperPhotoContainer><img alt="Comfortable king size bed  , Dressing cupboard and wardrobe" src={data.image[1]}/></UpperPhotoContainer>
                             <BottomPhotoContainer>
-                                <div>
-                                <img  alt="Ensuite bathroom" class="photo-grid__photo" src="https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/269c1d02.f6.jpg"/>
-                                </div>
-                                <div>
-                                <img alt="Ensuite bathroom" class="photo-grid__photo" src="	https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/efd3ff6c.f10.jpg"></img>
-                                </div>
+                                <img  alt="Ensuite bathroom" class="photo-grid__photo" src={data.image[2]}/>
                             </BottomPhotoContainer>
-                        </PhotoRightContainer>
                     </PhotoGridRight>
                 </PhotoGridContainer>
                 <AmenitiesHeading>Amenities</AmenitiesHeading>
@@ -471,7 +458,7 @@ export const CheckoutPage = () => {
                 <PaymentOverlay>
                     <PaymentUpper>
                         <div>Total</div>
-                        <div>₹3,467.75</div>
+                        <div>₹{data.price}.00</div>
                     </PaymentUpper>
                     <PaymentLower>
                         <div>Total includes fees, not tax</div>
