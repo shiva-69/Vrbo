@@ -8,6 +8,7 @@ import BackButton from "../../Components/BackButton";
 import { useDispatch } from "react-redux";
 import toggleAuth from "../../redux/auth/action";
 import GoogleAuth from "../../Components/context/googleAuth";
+import { Warning } from "../../Components/warning/Warning";
 <link rel="manifest" href="/manifest.webmanifest"></link>
 
 export const Login = () => {
@@ -16,7 +17,8 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch()
-
+  const [wrong,setWrong] = useState(false);
+  const [warrningMsg,setWarrningMsg] = useState()
 
 
   async function checkLogin() {
@@ -31,7 +33,16 @@ export const Login = () => {
     var emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var passValidate = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 
-if( email.match(emailValidate) &&
+    if (!email || !pass ){
+      setWrong(true)
+      setTimeout(() => {
+        setWrong(false)
+      },3000);
+      setWarrningMsg(
+        "Please fill the details"
+      )
+     }
+        else if( email.match(emailValidate) &&
 pass.match(passValidate)){
 
     fetch("http://localhost:3001/login", {
@@ -48,10 +59,20 @@ pass.match(passValidate)){
         })
   }
   else if( !(email.match(emailValidate))){
-    window.alert("wrong password")
+    setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        setWarrningMsg("Please enter a valid email")
 
   }else{
-    window.alert("worng E-mail id")
+    setWrong(true)
+        setTimeout(() => {
+          setWrong(false)
+        },3000);
+        setWarrningMsg(
+          "Password should contain 6-20 characters,one number, one lowercase and an uppercase character"
+        )
   }
     
     // console.log(data);
@@ -71,6 +92,11 @@ pass.match(passValidate)){
   ) : (
     <>
       <BackButton />
+      <div className="notification">
+        {
+          wrong? <Warning message={warrningMsg} /> : <div></div>
+        }
+        </div>
       <div className="Sign-in-box">
         <h2>Sign in</h2>
         <input
@@ -112,7 +138,7 @@ pass.match(passValidate)){
         <p>Forgot password ?</p>
         <p>
           Don't have an account?
-          <Link to="/register">Create one</Link>
+          <Link to="/signup">Create one</Link>
         </p>
 
         <p>or continue with</p>
