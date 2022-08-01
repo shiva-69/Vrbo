@@ -81,3 +81,13 @@
 .googleauth{
   padding: 0 25%;
 }
+.notification{
+  /* width: 70%; */
+  height: 35px;
+  /* display: inline; */
+}
+.notification > div{
+  width: 100%;
+  height: 35px;
+
+}

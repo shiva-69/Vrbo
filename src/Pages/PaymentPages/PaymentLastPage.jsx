@@ -1,7 +1,8 @@
 import React from "react";
 import {Box,Spinner } from "@chakra-ui/react";
 import { useToast } from '@chakra-ui/react'
-
+import { Footer } from "../Home/footer/Footer";
+import { Navbar } from "../../Components/navbar/navbar";
 import PaymentLastPageStyles from "./Styles/PaymentLastPage.module.css";
 export function PaymentLastPage()
 {
@@ -107,6 +108,8 @@ export function PaymentLastPage()
     
     const {first_name,last_name,card_number,expiry_date,cvv,street,country,city,zip_code,state}=formData;
     return(
+        <>
+        <Navbar/>
         <div className={PaymentLastPageStyles.mainContainer}>
             
             <div className={PaymentLastPageStyles.headingContainer}>
@@ -326,6 +329,8 @@ export function PaymentLastPage()
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     )
     
 }
