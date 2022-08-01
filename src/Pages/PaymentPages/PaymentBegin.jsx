@@ -89,7 +89,7 @@ export function PaymentBegin()
                         <div className={PaymentBeginStyles.ContactForm} style={{display:"flex",flexDirection:"column",gap:"10px"}}>
                             <div style={{display:"flex",gap:"10px"}}>
                                 <input type="text" placeholder="First Name" value={data.user_data.name.split(" ")[0]} onChange={(e)=>(e.target.value)}/>
-                                <input type="text" placeholder="Last Name" value={data.user_data.name.split(" ")[1]+" "+data.user_data.name.split(" ")[2]} onChange={(e)=>(e.target.value)}/>
+                                <input type="text" placeholder="Last Name" value={data.user_data.name.split(" ")[1]} onChange={(e)=>(e.target.value)}/>
                             </div>
                             <div style={{display:"flex",gap:"10px"}}>
                                 <input type="text" placeholder="Email" value={data.user_data.email} onChange={(e)=>(e.target.value)} />

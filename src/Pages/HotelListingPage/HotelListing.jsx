@@ -26,13 +26,15 @@ function HotelListing()
     //         }
     //     city = city.join("");
     // }
-    const handleClick = () => {
-        navigate("/checkout");
-    }
+    
+
+
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
     // console.log(city);
+
+
     React.useEffect(()=>
     {
         fetch(`http://localhost:3001/hotel/Delhi`)
@@ -50,6 +52,13 @@ function HotelListing()
         })
         .finally(()=>setIsLoading(false));
     },[city])
+
+    const handleNavigation = (id) => {
+        console.log(id)
+        navigate("/checkout", {state : {id: id}});
+    }
+
+
     if(isLoading)
     {
         return (
@@ -103,7 +112,7 @@ function HotelListing()
                 
                 {  hotels.map((item)=>
                 ( 
-                    <div key={item._id} className={HotelListingStyles.hoteldiv} onClick={handleClick}> 
+                    <div key={item._id} className={HotelListingStyles.hoteldiv} onClick = {(e) => handleNavigation(item.id)}>
                         <img className={HotelListingStyles.hotelImage} src={item.image[0]} alt="" />
                         <div>
                             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>

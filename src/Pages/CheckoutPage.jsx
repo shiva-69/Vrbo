@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Navbar } from "../Components/navbar/navbar";
 import { Footer } from "./Home/footer/Footer";
 import { useSelector } from "react-redux";
+import {useLocation, useNavigate} from "react-router-dom";
+import {Box,Spinner } from "@chakra-ui/react";
+
 
 
 const Container = styled.div`
@@ -75,47 +78,41 @@ button{
 }
 `
 const PhotoGridContainer = styled.div`
-display: flex;
+display : flex;
 gap: 10px;
-box-sizing: border-box;
-img{
-    transition: border-radius .25s,box-shadow .25s;
-    &:hover {
-        border-radius: 5px;
-    }
-}
 `
 const PhotoGridLeft =  styled.div`
-flex-basis: 65%;   
-box-sizing: border-box; 
+flex-basis: 65%;
+height: 400px;
+box-sizing: border-box;
+img{
+    max-height: 410px;
+    width: 100%;
+}
 `
 const PhotoGridRight = styled.div`
 flex-basis: 35%;
-box-sizing: border-box;
-`
-const PhotoRightContainer = styled.div`
 display: flex;
 flex-direction: column;
+height: 400px;
 gap: 10px;
-box-sizing: border-box;
-// img{
-//     box-sizing: border-box;
-//     height: 60%;
-//     width: 100%;
-// };
-div{
-    gap: 10px;
-}
 `
+
 const UpperPhotoContainer = styled.div`
+height: 50%;
 img{
-    height: 17rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
+
 `
 const BottomPhotoContainer = styled.div`
-display: flex;
+height: 50%;
 img{
-    height: 10rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 `
 const RentalPrice = styled.div`
@@ -301,6 +298,30 @@ div{
 `;
 
 export const CheckoutPage = () => {
+    const navigate = useNavigate();
+    const {state} = useLocation();
+    const id = state.id;
+    const [data,setHotel]=React.useState({});
+    const [isLoading,setIsLoading]=React.useState(true);
+    const [isError,setIsError]=React.useState(false);
+
+    React.useEffect(()=>{
+        fetch(`http://localhost:3001/hotel/id/${id}`)
+        .then((res)=>res.json())
+        .then((res)=>
+        {  
+            setIsError(false);
+            setHotel(res);
+            
+        })
+        .catch((error)=>
+        {
+            setIsError(true);
+            console.log(error);
+        })
+        .finally(()=>setIsLoading(false));
+    }, [])
+
 
     const bookingDetails = useSelector(state => state.search.search);    
     var month = bookingDetails.startDate.getUTCMonth() + 1;
@@ -313,6 +334,46 @@ export const CheckoutPage = () => {
     year = bookingDetails.endDate.getUTCFullYear();
     let endDate = year + "/" + month + "/" + day;
     
+    const handleClick = () => {
+        let email= JSON.parse(localStorage.getItem("userId")).email;
+        const payload = {
+            user_email : email,
+            hotel_id: data._id,
+            check_in_date : bookingDetails.startDate,
+            check_out_date: bookingDetails.endDate,
+            number_of_guests: bookingDetails.guest,
+        }
+
+        fetch("http://localhost:3001/checkout",{
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers : {
+                "Content-type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+        navigate("/firstPayment")
+    }
+
+
+    if(isLoading)
+    {
+        return (
+            
+            <Box textAlign="center" marginTop="250px">
+            <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.500'
+                size='xl'
+                textAlign="center"
+            />
+            </Box>
+        );
+    }
     return <>
     <Navbar/>
         <Container>
@@ -321,7 +382,7 @@ export const CheckoutPage = () => {
                     India /{bookingDetails.city}/ <span>Baner</span>
                 </CityContainer>
                 <HeadlineOverlay>
-                    <HeadlineContainer>Homestay @ Baner (Ensuite)</HeadlineContainer>
+                    <HeadlineContainer>{data.hotel_name}</HeadlineContainer>
                     <ButtonContainer>
                         <button><svg class="react-trip-board-button__svg" data-id="SVG_HEART__16" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path class="react-trip-board-button__heart-core__heart-icon react-trip-board-button__heart-core-bg" fill="none" strokeLinecap="round" strokeLinejoin="round" d="M8 3.98S9.13 2 11.5 2C13.57 2 15 3.7 15 5.73c0 2.86-2.98 4.6-7 8.27-4.02-3.67-7-5.41-7-8.27C1 3.7 2.43 2 4.5 2 6.88 2 8 3.98 8 3.98z"></path><path class="react-trip-board-button__heart-core__heart-icon" fill="none" strokeLinecap="round" strokeLinejoin="round" d="M8 3.98S9.13 2 11.5 2C13.57 2 15 3.7 15 5.73c0 2.86-2.98 4.6-7 8.27-4.02-3.67-7-5.41-7-8.27C1 3.7 2.43 2 4.5 2 6.88 2 8 3.98 8 3.98z"></path></svg><span>Save</span></button>
                         <button><svg data-id="SVG_SHARE__16" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" d="M13.676 9.893v2.94c0 .626-.508 1.135-1.135 1.135H3.46a1.136 1.136 0 01-1.136-1.135v-2.94M3.93 5.474L8 2.032l4.07 3.442M8 2.6v7.568"></path></svg><span>Share</span></button>
@@ -329,20 +390,13 @@ export const CheckoutPage = () => {
                 </HeadlineOverlay>
                 <PhotoGridContainer>
                     <PhotoGridLeft>
-                    <img alt="Spacious room for 2" src="https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/c3a80d74.f10.jpg"/>
+                    <img alt="Spacious room for 2" src={data.image[0]}/>
                     </PhotoGridLeft>
                     <PhotoGridRight>
-                        <PhotoRightContainer>
-                            <UpperPhotoContainer><img alt="Comfortable king size bed  , Dressing cupboard and wardrobe" src="https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/63d4c51f.f10.jpg"/></UpperPhotoContainer>
+                            <UpperPhotoContainer><img alt="Comfortable king size bed  , Dressing cupboard and wardrobe" src={data.image[1]}/></UpperPhotoContainer>
                             <BottomPhotoContainer>
-                                <div>
-                                <img  alt="Ensuite bathroom" class="photo-grid__photo" src="https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/269c1d02.f6.jpg"/>
-                                </div>
-                                <div>
-                                <img alt="Ensuite bathroom" class="photo-grid__photo" src="	https://media.vrbo.com/lodging/32000000/31560000/31550500/31550489/efd3ff6c.f10.jpg"></img>
-                                </div>
+                                <img  alt="Ensuite bathroom" class="photo-grid__photo" src={data.image[2]}/>
                             </BottomPhotoContainer>
-                        </PhotoRightContainer>
                     </PhotoGridRight>
                 </PhotoGridContainer>
                 <AmenitiesHeading>Amenities</AmenitiesHeading>
@@ -374,7 +428,7 @@ export const CheckoutPage = () => {
             <RightOverlay>
 
                 <RentalPrice>
-                    <RentalUpper>₹1,633</RentalUpper>
+                    <RentalUpper>₹{data.price}</RentalUpper>
                     <RentalDown>/night </RentalDown>
                 </RentalPrice>
                 <DateAvailabilityOverlay>
@@ -404,14 +458,14 @@ export const CheckoutPage = () => {
                 <PaymentOverlay>
                     <PaymentUpper>
                         <div>Total</div>
-                        <div>₹3,467.75</div>
+                        <div>₹{data.price}.00</div>
                     </PaymentUpper>
                     <PaymentLower>
                         <div>Total includes fees, not tax</div>
                         <div className="viewDetails">View Details</div>
                     </PaymentLower>
                 </PaymentOverlay>
-                <BookNowButton>
+                <BookNowButton onClick = {handleClick}>
                     <span>Book Now</span>
                 </BookNowButton>
                 <hr />

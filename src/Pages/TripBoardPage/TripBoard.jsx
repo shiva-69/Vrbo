@@ -4,7 +4,7 @@ import TripBoardStyles from "./TripBoard.module.css";
 
 export function TripBoard()
 {
-    let user_email="sreejithskumar80@gmail.com";
+    let user_email= JSON.parse(localStorage.getItem("userId")).email;
     const [bookings,setBookings]=React.useState([]);
     const [isLoading,setIsLoading]=React.useState(true);
     const [isError,setIsError]=React.useState(false);
