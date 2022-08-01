@@ -1,7 +1,8 @@
 import React from "react";
 import {Box,Spinner } from "@chakra-ui/react";
 import TripBoardStyles from "./TripBoard.module.css";
-
+import { Footer } from "../Home/footer/Footer";
+import { Navbar } from "../../Components/navbar/navbar";
 export function TripBoard()
 {
     let user_email= JSON.parse(localStorage.getItem("userId")).email;
@@ -71,6 +72,8 @@ export function TripBoard()
     }
     
     return(
+        <>
+        <Navbar/>
         <div className={TripBoardStyles.mainContainer} >
             <div className={TripBoardStyles.leftContainer}>
             {
@@ -151,5 +154,7 @@ export function TripBoard()
             </div>
         
         </div>
+        <Footer/>
+        </>
     )
 }

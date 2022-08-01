@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Navbar } from "../Components/navbar/navbar";
-import { Footer } from "./home/footer/Footer";
+import { Footer } from "./Home/footer/Footer";
 import { useSelector } from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Box,Spinner } from "@chakra-ui/react";

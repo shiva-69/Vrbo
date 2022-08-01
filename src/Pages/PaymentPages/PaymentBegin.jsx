@@ -1,7 +1,9 @@
 import React from "react"; 
 import PaymentBeginStyles from "./Styles/PaymentBegin.module.css"; 
 import {Box,Spinner } from "@chakra-ui/react";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import { Footer } from "../Home/footer/Footer";
+import { Navbar } from "../../Components/navbar/navbar";
 
 
 export function PaymentBegin()
@@ -59,8 +61,8 @@ export function PaymentBegin()
         )
     }
     return(
-    
-        
+    <>
+        <Navbar/>
        <div className={PaymentBeginStyles.mainContainer}>
             
             <div className={PaymentBeginStyles.headingContainer}>
@@ -213,5 +215,7 @@ export function PaymentBegin()
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
