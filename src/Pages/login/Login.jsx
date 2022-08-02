@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Spinner from "react-spinner-material";
@@ -9,11 +8,11 @@ import { useDispatch } from "react-redux";
 import toggleAuth from "../../redux/auth/action";
 import GoogleAuth from "../../Components/context/googleAuth";
 
+
+import jwt_decode from "jwt-decode";
 import { Warning } from "../../Components/warning/Warning";
 <link rel="manifest" href="/manifest.webmanifest"></link>
 
-import jwt_decode from "jwt-decode";
-<link rel="manifest" href="/manifest.webmanifest"></link>;
 
 
 export const Login = () => {
@@ -21,8 +20,6 @@ export const Login = () => {
   const [pass, setPass] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const dispatch = useDispatch()
   const [wrong,setWrong] = useState(false);
   const [warrningMsg,setWarrningMsg] = useState()
 
@@ -100,8 +97,6 @@ pass.match(passValidate)){
         )
   }
     
-
-        });
     } else if (!email.match(emailValidate)) {
       window.alert("wrong password");
     } else {

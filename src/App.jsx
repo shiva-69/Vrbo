@@ -5,7 +5,7 @@ import { CheckoutPage } from './Pages/CheckoutPage';
 import { PaymentBegin } from './Pages/PaymentPages/PaymentBegin';
 import { PaymentLastPage } from './Pages/PaymentPages/PaymentLastPage';
 import { TripBoard } from './Pages/TripBoardPage/TripBoard';
-import { Home } from './Pages/Home/home';
+import { Home } from './Pages/home/home';
 import Signup from './Pages/signup/Signup';
 import { Login } from './Pages/login/Login';
 

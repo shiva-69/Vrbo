@@ -3,7 +3,7 @@ import HotelListingStyles from "./HotelListing.module.css";
 import StarsRating from 'stars-rating';
 import heart from "../HotelListingPage/heart.png";
 import {Box,Spinner } from "@chakra-ui/react";
-import { Footer } from "../Home/footer/Footer";
+import { Footer } from "../home/footer/Footer";
 import { Navbar } from "../../Components/navbar/navbar";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";

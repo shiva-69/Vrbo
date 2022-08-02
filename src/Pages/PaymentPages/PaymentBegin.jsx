@@ -2,7 +2,7 @@ import React from "react";
 import PaymentBeginStyles from "./Styles/PaymentBegin.module.css"; 
 import {Box,Spinner } from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
-import { Footer } from "../Home/footer/Footer";
+import { Footer } from "../home/footer/Footer";
 import { Navbar } from "../../Components/navbar/navbar";
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {Box,Spinner } from "@chakra-ui/react";
 import { useToast } from '@chakra-ui/react'
-import { Footer } from "../Home/footer/Footer";
+import { Footer } from "../home/footer/Footer";
 import { Navbar } from "../../Components/navbar/navbar";
 import PaymentLastPageStyles from "./Styles/PaymentLastPage.module.css";
 export function PaymentLastPage()
