@@ -89,7 +89,6 @@
 #button-search {
   background: #245abc;
   justify-content: center;
-  gap: 8%;
   border-radius: 100px;
   text-decoration: none;
   border: none;
@@ -113,7 +112,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10%;
 }
 
 
