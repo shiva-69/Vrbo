@@ -1,8 +1,9 @@
 const mongoose=require("mongoose");
+require('dotenv').config({path:"../../Backend/.env"})
 
 async function connectDatabase()
 {
-    const dbURI="mongodb://127.0.0.1:27017/Vrbo";
+    const dbURI=process.env.MONGODB_URI;
     try {
         await mongoose.connect(dbURI);
         console.log("Database connected ")

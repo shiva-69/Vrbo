@@ -1,6 +1,8 @@
+require('dotenv').config({path:"../.env"})
 const express=require("express");
 const cors=require("cors");
-const connectDatabase=require("./Database/index");
+const mongoose=require("mongoose");
+
 const HotelRouter=require("./Routers/HotelRouter");
 const UserRouter = require("./Routers/User");
 const BookingRouter=require("./Routers/BookingRouter");
@@ -13,7 +15,7 @@ const getCityRouter = require("./Routers/getcity");
 
 
 const app=express();
-const port = 3001;
+const PORT = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
@@ -39,11 +41,23 @@ app.use(BookingRouter);
 
 app.use(CheckoutRouter);
 
+async function connectDatabase()
+{
+    const dbURI=process.env.MONGODB_URI;
+    console.log(dbURI)
+    try {
+        await mongoose.connect(dbURI);
+        console.log("Database connected ")
+    } catch (error) {
+        console.log("Something went wrong with database " ,dbURI)
+    }
+}
+
 connectDatabase()
 .then(()=>{
-    app.listen(port,()=>
+    app.listen(PORT,()=>
     {
-        console.log(`Server connected to port ${port}`);
+        console.log(`Server connected to port ${PORT}`);
     })
 })
 

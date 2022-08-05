@@ -1,6 +1,6 @@
 const Hotels=require("../Database/Hotels");
-const connectDatabase=require("../Database/index");
-
+require('dotenv').config({path:"../.env"})
+const mongoose=require("mongoose");
    let hotels= [
       {
         "id": 1,
@@ -159,6 +159,17 @@ async function HotelPopulate()
     }
     await Hotels.create(hotelData);
   }
+}
+async function connectDatabase()
+{
+    const dbURI=process.env.MONGODB_URI;
+    console.log(dbURI)
+    try {
+        await mongoose.connect(dbURI);
+        console.log("Database connected ")
+    } catch (error) {
+        console.log("Something went wrong with database " ,dbURI)
+    }
 }
 
 
