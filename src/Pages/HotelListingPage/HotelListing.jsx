@@ -37,7 +37,7 @@ function HotelListing()
 
     React.useEffect(()=>
     {
-        fetch(`http://localhost:3001/hotel/Delhi`)
+        fetch(`https://young-shelf-48162.herokuapp.com/hotel/Delhi`)
         .then((res)=>res.json())
         .then((res)=>
         {  

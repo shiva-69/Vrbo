@@ -11,10 +11,10 @@ export function TripBoard()
     const [isError,setIsError]=React.useState(false);
     const handleDelete=(id)=>
     {
-        fetch(`http://localhost:3001/bookings/${id}`,{
+        fetch(`https://young-shelf-48162.herokuapp.com/bookings/${id}`,{
             method:"DELETE"
         })
-        fetch(`http://localhost:3001/bookings/${user_email}`)
+        fetch(`https://young-shelf-48162.herokuapp.com/bookings/${user_email}`)
         .then((res)=>res.json())
         .then((res)=>
         {       
@@ -33,7 +33,7 @@ export function TripBoard()
     {   
        
        
-        fetch(`http://localhost:3001/bookings/${user_email}`)
+        fetch(`https://young-shelf-48162.herokuapp.com/bookings/${user_email}`)
         .then((res)=>res.json())
         .then((res)=>
         {       

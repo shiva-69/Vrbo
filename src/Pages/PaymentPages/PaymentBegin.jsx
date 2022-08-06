@@ -23,7 +23,7 @@ export function PaymentBegin()
     {   
        
        
-        fetch("http://localhost:3001/checkout")
+        fetch("https://young-shelf-48162.herokuapp.com/checkout")
         .then((res)=>res.json())
         .then((res)=>
         {       

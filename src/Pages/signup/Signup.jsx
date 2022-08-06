@@ -55,7 +55,7 @@ const Signup = ()=>{
         pass.match(passValidate)
       ) {
         console.log('fetching')
-        fetch("http://localhost:3001/register",{
+        fetch("https://young-shelf-48162.herokuapp.com/register",{
           method : "POST",
           body : JSON.stringify(data),
           headers : {

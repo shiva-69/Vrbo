@@ -306,7 +306,7 @@ export const CheckoutPage = () => {
     const [isError,setIsError]=React.useState(false);
 
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/hotel/id/${id}`)
+        fetch(`https://young-shelf-48162.herokuapp.com/hotel/id/${id}`)
         .then((res)=>res.json())
         .then((res)=>
         {  
@@ -344,7 +344,7 @@ export const CheckoutPage = () => {
             number_of_guests: bookingDetails.guest,
         }
 
-        fetch("http://localhost:3001/checkout",{
+        fetch("https://young-shelf-48162.herokuapp.com/checkout",{
             method: "POST",
             body: JSON.stringify(payload),
             headers : {

@@ -23,7 +23,7 @@ const GoogleAuth = () =>{
         email : email
     }
     const data = {user : user}
-    fetch("http://localhost:3001/register",{
+    fetch("https://young-shelf-48162.herokuapp.com/register",{
         method : "POST",
         body : JSON.stringify(data),
         headers : {

@@ -38,7 +38,7 @@ export function PaymentLastPage()
             formData:formData
         }
         console.log(formData);
-        fetch("http://localhost:3001/bookings",{
+        fetch("https://young-shelf-48162.herokuapp.com/bookings",{
             method:"POST",
             body:JSON.stringify(bookingData),
             headers:{"Content-type":"Application/json"}
@@ -68,7 +68,7 @@ export function PaymentLastPage()
     {   
        
        
-        fetch("http://localhost:3001/checkout")
+        fetch("https://young-shelf-48162.herokuapp.com/checkout")
         .then((res)=>res.json())
         .then((res)=>
         {       

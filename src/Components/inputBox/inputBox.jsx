@@ -82,7 +82,7 @@ export const InputBox = () => {
     setSearchText(queary);
     console.log(queary);
     if (fetchData) {
-      fetch(`http://localhost:3001/vrbo/${queary}`)
+      fetch(`https://young-shelf-48162.herokuapp.com/vrbo/${queary}`)
         .then((res) => res.json())
         .then((res) => setSearch(res));
     }
