@@ -28,6 +28,7 @@ It connects homeowners with families and vacationers looking for something more 
 - ChakraUI
 - GoogleAuth
 - Styled Components
+- JavaScript
 
 
 ## Expected flow on the App
